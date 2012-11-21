@@ -19,13 +19,13 @@
                 allow from all
         </Directory>
 
-        ErrorLog /var/log/apache2/error.ronl.log
+        ErrorLog /var/log/apache2/error.scrumster.log
 
         # Possible values include: debug, info, notice, warn, error, crit,
         # alert, emerg.
         LogLevel warn
 
-        CustomLog /var/log/apache2/ronl.log combined
+        CustomLog /var/log/apache2/scrumster.log combined
 
 	SetEnv PHDEBUG TRUE
 
