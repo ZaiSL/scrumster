@@ -28,6 +28,5 @@ server {
 		proxy_pass_header Content-Length;
 
 		root /home/boston/www/scrumster/public;
-
 	}
 } 
