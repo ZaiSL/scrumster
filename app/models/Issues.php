@@ -82,5 +82,9 @@ class Issues extends \Phalcon\Mvc\Model
      */
     public $created_at;
 
+	public function initialize() {
+		$this->belongsTo('user_id', 'Users', 'id');
+		$this->belongsTo('project_id', 'Projects', 'id');
+	}
 
 }

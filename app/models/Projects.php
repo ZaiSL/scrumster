@@ -16,5 +16,7 @@ class Projects extends \Phalcon\Mvc\Model
      */
     public $title;
 
-
+	public function initialize() {
+		$this->hasMany('id', 'Issues', 'project_id');
+	}
 }
