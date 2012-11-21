@@ -2,13 +2,23 @@
 
 class IndexController extends ControllerBase {
 
+	/**
+	 * Главная страница приложения
+	 */
     public function indexAction() {
 
-        $this->view->setVar('hello','Привет упыри!');
+		$user = $this->session->get('auth');
+		$this->view->setVar('user',$user['user']);
     }
     
+	/**
+	 * Метод-заглушка для формы авторизации
+	 */
 	public function loginFormAction() {}
 	
+	/**
+	 * Авторизация юзера
+	 */
 	public function loginAction() {
 		
 		$name = $this->request->getPost('login');
@@ -31,8 +41,6 @@ class IndexController extends ControllerBase {
 					'user' => $user
 				));
 				
-				var_dump(111);die;
-				
 				return $this->dispatcher->forward(array(
 						'controller' => 'index',
 						'action' => 'index'
@@ -47,4 +55,3 @@ class IndexController extends ControllerBase {
 		));
 	}
 }
-
