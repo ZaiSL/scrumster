@@ -1,12 +1,10 @@
 
-
 /**
  * Базовая вьюха для сайдбаров редактирования ипросмотра ишью
  * Вьюха завязана на модель конкретного ишью
  */
 App.IssueSidebarView = Backbone.View.extend({
 
-    sidebarTemplate : App.JST['issues.sidebar/sidebar'],
     template : '',
 
     events : {
@@ -15,29 +13,26 @@ App.IssueSidebarView = Backbone.View.extend({
 
     initialize : function (){
 
-
+        this.$el.appendTo('#content');
         _.extend(this.events, App.IssueSidebarView.prototype.events); // наследуем события
     },
 
     render : function (){
 
-        //рендерим базовый темплейт сайдбара
 
-        //рендерим внутренний темплейт сайдбара
 
         return this;
     },
 
     open : function (){
-
+        this.$el.show();
     },
 
     close : function (){
-
+        this.$el.hide();
     }
 
 });
-
 
 
 /**
@@ -45,18 +40,21 @@ App.IssueSidebarView = Backbone.View.extend({
  */
 App.AddIssueSidebarView = App.IssueSidebarView.extend({
 
-    events : {
+    template : App.JST['issues.sidebar/new'].layout,
+    tagName : App.JST['issues.sidebar/new'].tagName,
+    className : App.JST['issues.sidebar/new'].className,
 
+    events : {
+        'click .btn-close-sidebar' : 'close'
     },
 
     initialize : function (){
         App.IssueSidebarView.prototype.initialize.call(this); // parent::initialize();
-
-
     },
 
     render : function (){
-        App.IssueSidebarView.prototype.render.call(this); // parent::initialize();
+
+        this.$el.html(this.template());
 
     }
 
@@ -76,12 +74,12 @@ App.ViewIssueSidebarView = App.IssueSidebarView.extend({
     },
 
     initialize : function (){
-        App.IssueSidebarView.prototype.initialize.call(this); // parent::initialize();
+
 
     },
 
     render : function (){
-        App.IssueSidebarView.prototype.render.call(this); // parent::initialize();
+
 
     }
 

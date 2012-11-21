@@ -40,8 +40,8 @@ App.AppView = Backbone.View.extend({
 
     addIssueButtonClick : function (){
 
-        console.log('add issue');
-/*
+
+
         var issue = new App.Issue();
 
         if (!this.addIssueView) {
@@ -52,7 +52,7 @@ App.AppView = Backbone.View.extend({
 
         this.addIssueView.render();
         this.addIssueView.open();
-*/
+
     }
 
 

@@ -33,9 +33,6 @@ class IndexController extends ControllerBase {
 		
 		if ($user !== false) {
 
-
-
-
 			list($db_pass, $db_salt) = explode(':',$user->password);
 			if (sha1($pass.$db_salt) == $db_pass) {
 
