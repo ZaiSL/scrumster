@@ -1,7 +1,5 @@
 <?php
 
-$root = dirname(dirname(__DIR__));
-
 return new \Phalcon\Config(array(
 	'database' => array(
 		'adapter'  => 'Mysql',
@@ -11,14 +9,14 @@ return new \Phalcon\Config(array(
 		'name'     => 'scrumster',
 	),
 	'application' => array(
-		'publicDir'         => $root . '/public/',
-		'controllersDir'    => $root . '/app/controllers/',
-		'modelsDir'         => $root . '/app/models/',
-		'viewsDir'          => $root . '/app/views/',
-		'pluginsDir'        => $root . '/app/plugins/',
-		'libraryDir'        => $root . '/app/library/',
-        'widgetsDir'        => $root . '/app/widgets/',
-		'helpersDir'        => $root . '/app/helpers/',
+		'publicDir'         =>  '/public/',
+		'controllersDir'    =>  '/app/controllers/',
+		'modelsDir'         =>  '/app/models/',
+		'viewsDir'          =>  '/app/views/',
+		'pluginsDir'        =>  '/app/plugins/',
+		'libraryDir'        =>  '/app/library/',
+        'widgetsDir'        =>  '/app/widgets/',
+		'helpersDir'        =>  '/app/helpers/',
 		'baseUri'           => 'http://www.scrumster.local',
 	),
 	'models' => array(

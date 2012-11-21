@@ -5,7 +5,6 @@ namespace Ph;
 use \Phalcon\Config\Adapter\Ini as PhConfig;
 use \Phalcon\Loader as PhLoader;
 use \Phalcon\Flash\Session as PhFlash;
-use \Phalcon\Logger\Adapter\File as PhLogger;
 use \Phalcon\Db\Adapter\Pdo\Mysql as PhMysql;
 use \Phalcon\Session\Adapter\Files as PhSession;
 use \Phalcon\Cache\Frontend\Data as PhCacheFront;
@@ -15,7 +14,6 @@ use \Phalcon\Mvc\Dispatcher as PhDispatcher;
 use \Phalcon\Mvc\Router as PhRouter;
 use \Phalcon\Mvc\Url as PhUrl;
 use \Phalcon\Mvc\View as PhView;
-use \Phalcon\Mvc\View\Engine\Volt as PhVolt;
 use \Phalcon\Mvc\Model\Metadata\Memory as PhMetadataMemory;
 use \Phalcon\Events\Manager as PhEventsManager;
 use \Phalcon\Exception as PhException;
@@ -46,13 +44,11 @@ class Bootstrap
         $loaders = array(
             'config',
             'loader',
-            'environment',
-            'flash',
+            //'environment',
             'url',
-            'dispatcher',
+            //'dispatcher',
             'router',
             'view',
-            //'logger',
             'database',
             'session',
         );
@@ -126,28 +122,6 @@ class Bootstrap
     {
         set_error_handler(array('\Ph\Error', 'normal'));
         set_exception_handler(array('\Ph\Error', 'exception'));
-    }
-
-    /**
-     * Initializes the flash messenger
-     *
-     * @param array $options
-     */
-    protected function initFlash($options = array())
-    {
-        $this->_di->set(
-            'flash',
-            function()
-            {
-                $params = array(
-                    'error'   => 'alert alert-error',
-                    'success' => 'alert alert-success',
-                    'notice'  => 'alert alert-info',
-                );
-
-                return new PhFlash($params);
-            }
-        );
     }
 
     /**
@@ -253,25 +227,6 @@ class Bootstrap
             }
         );
     }
-    /**
-     * Initializes the logger
-     *
-     * @param array $options
-     */
-    protected function initLogger($options = array())
-    {
-        $config = $this->_di->get('config');
-
-        $this->_di->set(
-            'logger',
-            function() use ($config)
-            {
-                $logger = new PhLogger(ROOT_PATH . $config->app->logger->file);
-                $logger->setFormat($config->app->logger->format);
-                return $logger;
-            }
-        );
-    }
 
     /**
      * Initializes the database and netadata adapter
@@ -296,7 +251,7 @@ class Bootstrap
 
                 $connection = new PhMysql($params);
 
-                $connection->execute('SET NAMES UTF8',array());
+                //$connection->execute('SET NAMES UTF8',array());
                 
                 return $connection;
             }
