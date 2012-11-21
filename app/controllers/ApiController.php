@@ -1,6 +1,6 @@
 <?php
 
-class ApiController extends \Phalcon\Mvc\Controller {
+class ApiController extends ControllerBase {
 
 	/**
 	 * Список всех ишью - /api/issues/
@@ -26,14 +26,17 @@ class ApiController extends \Phalcon\Mvc\Controller {
 			);
 		}
 		
-		$this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
-		$this->success_answer_items($issues);
+        $this->view->setVar('success',true);
+        $this->view->setVar('message','ok');
+        $this->view->setVar('items',$issue);
+       
 	}
 	
 	/**
 	 * Добавление ишью
 	 */
 	public function issueAddAction() {
+        
 		$request = new \Phalcon\Http\Request();
 
 		$issue_data = json_decode($request->getRawBody(), true);
@@ -41,14 +44,9 @@ class ApiController extends \Phalcon\Mvc\Controller {
 		$issue = \Phalcon\Mvc\Model::dumpResult(new Issues(), $issue_data);
 		$issue->save();
 
-		$this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
-
-		echo json_encode(array(
-			'success' => true,
-			'message' => 'ok',
-			'data' => $issue
-		));
-
+        $this->view->setVar('success',true);
+        $this->view->setVar('message','ok');
+        $this->view->setVar('data',$issue);
 	}
 	
 	/**
@@ -65,9 +63,10 @@ class ApiController extends \Phalcon\Mvc\Controller {
 				'avatar' => $user->avatar,
 			);
 		}
-		
-		$this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
-		$this->success_answer_items($users);
+
+        $this->view->setVar('success',true);
+        $this->view->setVar('message','ok');
+        $this->view->setVar('items',$users);
 	}
 	
 	/**
@@ -76,14 +75,5 @@ class ApiController extends \Phalcon\Mvc\Controller {
 	public function userAddAction() {
 		
 		
-	}
-	
-	private function success_answer_items($items) {
-		
-		echo json_encode(array(
-			'success' => true,
-			'message' => 'ok',
-			'items'   => $items,
-		));
 	}
 }
