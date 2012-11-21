@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `sprints` (
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(60) NOT NULL,
   `email` varchar(30) NOT NULL,
   `avatar` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)

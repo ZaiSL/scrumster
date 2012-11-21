@@ -17,6 +17,7 @@ return new \Phalcon\Config(array(
 		'libraryDir'        =>  '/app/library/',
         'widgetsDir'        =>  '/app/widgets/',
 		'helpersDir'        =>  '/app/helpers/',
+		'tasksDir'          =>  '/app/cli/',
 		'baseUri'           => 'http://www.scrumster.local',
 	),
 	'models' => array(

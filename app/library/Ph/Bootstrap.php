@@ -103,6 +103,7 @@ class Bootstrap
                 ROOT_PATH . $config->application->modelsDir,
 				ROOT_PATH . $config->application->pluginsDir,
                 ROOT_PATH . $config->application->libraryDir,
+				ROOT_PATH . $config->application->tasksDir,
             )
         );
 
