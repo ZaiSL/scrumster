@@ -1,7 +1,8 @@
 <?php
 
-DEFINED('ROOT_PATH') OR DEFINE('ROOT_PATH', dirname(dirname(__FILE__)));
-DEFINE('PH_DEBUG',  (isset( $_SERVER['PHDEBUG'] ) || isset($_COOKIE['PHDEBUG'])) );
+defined('ROOT_PATH') OR DEFINE('ROOT_PATH', dirname(dirname(__DIR__)));
+//DEFINE('PH_DEBUG',  (isset( $_SERVER['PHDEBUG'] ) || isset($_COOKIE['PHDEBUG'])) );
+DEFINE('PH_DEBUG',false);
 
 switch (PH_DEBUG) {
 
@@ -35,6 +36,8 @@ switch (PH_DEBUG) {
 		break;
 }
 
+
+
 // Using require once because I want to get the specific
 // bootloader class here. The loader will be initialized
 // in my bootstrap class
@@ -43,6 +46,7 @@ require_once ROOT_PATH . '/app/library/Ph/Error.php';
 
 $di  = new \Phalcon\DI\FactoryDefault();
 
+/*
 $di->set('dispatcher', function() use ($di) {
 
     $eventsManager = $di->getShared('eventsManager');
@@ -50,17 +54,23 @@ $di->set('dispatcher', function() use ($di) {
     $eventsManager->attach('dispatch', $security);
     $dispatcher = new Phalcon\Mvc\Dispatcher();
     $dispatcher->setEventsManager($eventsManager);
-        
     return $dispatcher;
 });
+*/
 
 $di->set('view', function() use ($di) {
 
-        $config = $di->getShared('config',array());
+        $config = $di->get('config');
         
         $view = new \Phalcon\Mvc\View();
         $view->setViewsDir(ROOT_PATH . $config->application->viewsDir);
         
+        $view->registerEngines(
+            array(
+                ".json" => 'JsonTemplateAdapter',
+            )
+        );
+
         return $view;
     });
 

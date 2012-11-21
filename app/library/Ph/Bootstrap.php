@@ -48,7 +48,7 @@ class Bootstrap
             'url',
             //'dispatcher',
             'router',
-            'view',
+            //'view',
             'database',
             'session',
         );
