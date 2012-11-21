@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <link href="styles/app/app.css" rel="stylesheet" />
+
+    <title>Youboard</title>
+
+
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+
+        <a class="brand" href="#">Sprint #6</a>
+
+        <div class="nav-collapse collapse navbar-form pull-right">
+            <button class="btn btn-primary add-issue-button" type="button">Новая задача</button>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="container-fluid board" id="content">
+
+</div>
+
+<script>
+        var App = {
+            JST : {},
+            Storage : {},
+            Settings : {
+                currentUserId : 1
+            }
+        };
+
+
+        App.Storage.Users = [{
+            'id'        : 1,
+            'username'  : 'Zasil',
+            'email'     : 'Zasil@gmail.com',
+            'avatar'    : ''
+        },{
+            'id'        : 2,
+            'username'  : 'raplos',
+            'email'     : 'raplos@gmail.com',
+            'avatar'    : ''
+        },{
+            'id'        : 3,
+            'username'  : '',
+            'email'     : 'Zasil@gmail.com',
+            'avatar'    : ''
+        },{
+            'id'        : 4,
+            'username'  : 'deadkrolik',
+            'email'     : 'deadkrolik@gmail.com',
+            'avatar'    : ''
+        },{
+            'id'        : 5,
+            'username'  : 'Dilan McKey',
+            'email'     : 'DilanMcKey@gmail.com',
+            'avatar'    : ''
+        }];
+
+
+
+        App.Storage.Issues = [{
+            id              : 1,
+            project_id      : 0,
+            sprint_id       : 0,
+            type            : 0,
+            title           : 'Настройки приватности',
+            description     : 'Добавить функцию "Не участвовать в рейтинге Випзоны"',
+            estimate        : 0,
+            is_feature      : 1,
+            stage           : 1,
+            created_at      : '2012-11-20 12:45:06',
+            owner           : 1,
+            assigned_to     : 2,
+            parent_feature  : 0
+
+        },{
+            id              : 2,
+            project_id      : 0,
+            sprint_id       : 0,
+            type            : 0,
+            title           : 'Профиль. Добавить из профиля, с цифры рейтинга, ссылку на страницу  /top100',
+            description     : '',
+            estimate        : 0,
+            is_feature      : 0,
+            stage           : 1,
+            created_at      : '2012-11-20 12:30:06',
+            owner           : 1,
+            assigned_to     : 2,
+            parent_feature  : 1
+
+        },{
+            id              : 3,
+            project_id      : 0,
+            sprint_id       : 0,
+            type            : 0,
+            title           : 'Вывод рейтинга топ-100 по подаркам. Кодинг. у первого места должна быть большая фотка',
+            description     : '',
+            estimate        : 0,
+            is_feature      : 0,
+            stage           : 2,
+            created_at      : '2012-11-20 12:30:06',
+            owner           : 2,
+            assigned_to     : 3,
+            parent_feature  : 0
+
+        },{
+            id              : 4,
+            project_id      : 0,
+            sprint_id       : 0,
+            type            : 0,
+            title           : 'В разделе ТОП мужики сортируются теперь по другой цифре',
+            description     : '',
+            estimate        : 0,
+            is_feature      : 0,
+            stage           : 3,
+            created_at      : '2012-11-20 12:15:06',
+            owner           : 1,
+            assigned_to     : 3,
+            parent_feature  : 0
+
+        },{
+            id              : 5,
+            project_id      : 0,
+            sprint_id       : 0,
+            type            : 0,
+            title           : 'Включить на продуктовом склеивание скриптов',
+            description     : '',
+            estimate        : 0,
+            is_feature      : 0,
+            stage           : 4,
+            created_at      : '2012-11-20 12:10:15',
+            owner           : 1,
+            assigned_to     : 3,
+            parent_feature  : 0
+
+        }];
+
+    </script>
+
+
+    <script src="js/libs/jquery.js"></script>
+    <script src="js/libs/underscore.js"></script>
+    <script src="js/libs/backbone.js"></script>
+    <script src="js/libs/backbone-localstorage.js"></script>
+
+
+
+    <script src="js/app/app.js"></script>
+
+    <script src="js/app/models/users.js"></script>
+    <script src="js/app/models/issues.js"></script>
+
+    <script src="js/app/templates/app.js"></script>
+    <script src="js/app/templates/issues.js"></script>
+    <script src="js/app/templates/issues.sidebar.js"></script>
+
+
+    <script src="js/app/views/users.js"></script>
+    <script src="js/app/views/issues.js"></script>
+    <script src="js/app/views/issues.sidebar.js"></script>
+    <script src="js/app/views/app.js"></script>
+
+
+
+
+
+</body>
+</html>
