@@ -67,7 +67,7 @@ $di->set('view', function() use ($di) {
         
         $view->registerEngines(
             array(
-                ".json" => 'JsonTemplateAdapter',
+                ".phtml" => 'JsonTemplateAdapter',
             )
         );
 
