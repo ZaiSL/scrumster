@@ -2,3 +2,5 @@
 .project
 .settings
 phalcon
+access.log
+error.log
