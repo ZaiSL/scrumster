@@ -20,6 +20,12 @@ class Users extends \Phalcon\Mvc\Model
      * @var string
      *
      */
+    public $password;
+	
+    /**
+     * @var string
+     *
+     */
     public $email;
 
     /**
@@ -27,21 +33,6 @@ class Users extends \Phalcon\Mvc\Model
      *
      */
     public $avatar;
-
-
-    /**
-     * Validations and business logic 
-     */
-    public function validation()
-    {        
-        $this->validate(new Email(array(
-            "field" => "email",
-            "required" => true
-        )));
-        if ($this->validationHasFailed() == true) {
-            return false;
-        }
-    }
 
 	public function initialize() {
 		$this->hasMany('id', 'Issues', 'user_id');

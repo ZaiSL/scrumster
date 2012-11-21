@@ -46,6 +46,16 @@ require_once ROOT_PATH . '/app/library/Ph/Bootstrap.php';
 require_once ROOT_PATH . '/app/library/Ph/Error.php';
 
 $di  = new \Phalcon\DI\FactoryDefault();
+$di->set('dispatcher', function() use ($di) {
+
+    $eventsManager = $di->getShared('eventsManager');
+    $security = new Security($di);
+    $eventsManager->attach('dispatch', $security);
+    $dispatcher = new Phalcon\Mvc\Dispatcher();
+    $dispatcher->setEventsManager($eventsManager);
+    return $dispatcher;
+});
+
 $app = new \Ph\Bootstrap($di);
 
 echo $app->run(array());

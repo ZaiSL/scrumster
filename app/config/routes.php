@@ -8,10 +8,10 @@ $router->setDefaults(array(
 	'page'=>0
 ));
 
-/* тестовая площадка */
-$router->addGet("/sandbox/", array(
-	'controller'    => 'sandbox',
-	'action'        => 'index',
-))->setName("sandbox");
+//урл для авторизации
+$router->addPost("/login/", array(
+	'controller'    => 'index',
+	'action'        => 'login',
+))->setName("login");
 
 return $router;

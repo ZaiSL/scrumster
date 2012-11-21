@@ -101,6 +101,7 @@ class Bootstrap
             array(
                 ROOT_PATH . $config->application->controllersDir,
                 ROOT_PATH . $config->application->modelsDir,
+				ROOT_PATH . $config->application->pluginsDir,
                 ROOT_PATH . $config->application->libraryDir,
             )
         );
