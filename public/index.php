@@ -1,9 +1,10 @@
 <?php
 
-defined('ROOT_PATH') OR define('ROOT_PATH', dirname(dirname(__FILE__)));
+defined('ROOT_PATH') OR DEFINE('ROOT_PATH', dirname(dirname(__FILE__)));
 
 // режим работы окружения
-DEFINE('PH_DEBUG',  (isset( $_SERVER['PHDEBUG'] ) || isset($_COOKIE['PHDEBUG'])) );
+//DEFINE('PH_DEBUG',  (isset( $_SERVER['PHDEBUG'] ) || isset($_COOKIE['PHDEBUG'])) );
+DEFINE('PH_DEBUG',  false );
 
 
 switch (PH_DEBUG) {

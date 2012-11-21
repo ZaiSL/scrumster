@@ -202,8 +202,8 @@ class Bootstrap
                             case PhDispatcher::EXCEPTION_HANDLER_NOT_FOUND:
                             case PhDispatcher::EXCEPTION_ACTION_NOT_FOUND:
                                 $dispatcher->forward(array(
-                                    'controller' => 'index',
-                                    'action' => 'show404'
+                                    'controller' => 'ControllerBase',
+                                    'action' => 'notFound'
                                 ));
                                 return false;
                         }
