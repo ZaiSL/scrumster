@@ -1,0 +1,33 @@
+<VirtualHost *:88>
+
+	AllowEncodedSlashes on
+
+	ServerName scrumster.local
+	ServerAlias www.scrumster.local
+
+        ServerAdmin webmaster@localhost.test
+
+        DocumentRoot /home/boston/www/scrumster/public
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride All
+        </Directory>
+        <Directory /home/boston/www/>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        ErrorLog /var/log/apache2/error.ronl.log
+
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+        LogLevel warn
+
+        CustomLog /var/log/apache2/ronl.log combined
+
+	SetEnv PHDEBUG TRUE
+
+</VirtualHost>
+
