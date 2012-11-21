@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><?php echo htmlTags::getTitle() ?></title>
+    <meta name="description" content="<?php echo htmlTags::getDescription() ?>" />
+    <link href="/css/layout.css" rel="stylesheet">
+    <link href="/css/ronl.css" rel="stylesheet">
+    <script>var _live_site = '<?php echo $config->application->baseUri; ?>';</script>
+    <link rel="shortcut icon" href="<?php echo $config->application->baseUri ?>/favicon.ico" />
+</head>
+<body>
+
+<?php echo $this->getContent() ?>
+
+<?php ProfilertoolbarWidget::render($this); ?>
+
+</body>
+</html>
