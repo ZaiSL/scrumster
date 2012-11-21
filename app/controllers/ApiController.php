@@ -34,8 +34,21 @@ class ApiController extends \Phalcon\Mvc\Controller {
 	 * Добавление ишью
 	 */
 	public function issueAddAction() {
-		
-		
+		$request = new \Phalcon\Http\Request();
+
+		$issue_data = json_decode($request->getRawBody(), true);
+
+		$issue = \Phalcon\Mvc\Model::dumpResult(new Issues(), $issue_data);
+		$issue->save();
+
+		$this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
+
+		echo json_encode(array(
+			'success' => true,
+			'message' => 'ok',
+			'data' => $issue
+		));
+
 	}
 	
 	/**

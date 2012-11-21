@@ -23,7 +23,7 @@ $router->addGet('/api/issues/', array(
 $router->addPost('/api/issues/', array(
 	'controller'    => 'api',
 	'action'        => 'issueAdd',
-))->setName("api_issue_Add");
+))->setName("api_issue_add");
 
 //список юзеров
 $router->addGet('/api/users/', array(
