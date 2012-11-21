@@ -44,18 +44,39 @@ App.AddIssueSidebarView = App.IssueSidebarView.extend({
     tagName : App.JST['issues.sidebar/new'].tagName,
     className : App.JST['issues.sidebar/new'].className,
 
+    listsData : {},
+
     events : {
-        'click .btn-close-sidebar' : 'close'
+        'click .btn-close-sidebar' : 'close',
+        'click .btn-save-issue' : 'saveIssue'
     },
+
+
 
     initialize : function (){
         App.IssueSidebarView.prototype.initialize.call(this); // parent::initialize();
+
+        this.listsData = {
+            types : App.Storage.Types,
+            stages : App.Storage.Stages,
+            users : App.users.map(function (user) {return {id : user.id, name : user.get('username')}} )
+        };
+
     },
 
     render : function (){
 
-        this.$el.html(this.template());
+        this.$el.html(this.template(this.listsData));
 
+        this.$form = this.$('form');
+
+    },
+
+
+    saveIssue : function (){
+        var data = this.$form.serializeArray();
+
+        console.log(data);
     }
 
 
