@@ -32,7 +32,10 @@ class IndexController extends ControllerBase {
 		));
 		
 		if ($user !== false) {
-			
+
+
+
+
 			list($db_pass, $db_salt) = explode(':',$user->password);
 			if (sha1($pass.$db_salt) == $db_pass) {
 
@@ -40,11 +43,9 @@ class IndexController extends ControllerBase {
 				$this->session->set('auth', array(
 					'user' => $user
 				));
-				
-				return $this->dispatcher->forward(array(
-						'controller' => 'index',
-						'action' => 'index'
-				));
+
+                $this->response->redirect('/');
+
 			}
 		}
 
