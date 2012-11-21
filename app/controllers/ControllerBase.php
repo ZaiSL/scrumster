@@ -8,7 +8,7 @@ class ControllerBase extends \Phalcon\Mvc\Controller
 	 */
 	public function initialize()
 	{
-		htmlTags::setTitle( 'ronl' );
+		htmlTags::setTitle( 'scrumster' );
 	}
 		
 

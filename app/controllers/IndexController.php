@@ -9,11 +9,6 @@ class IndexController extends ControllerBase
         $this->view->setVar('hello','Привет упыри!');
         
     }
-
-    public function show404()
-    {
-        
-    }
     
 }
 

@@ -8,12 +8,6 @@ $router->setDefaults(array(
 	'page'=>0
 ));
 
-/* статичные страницы */
-$router->addGet("/{slug:[a-z0-9\-]+}/", array(
-	'controller'    => 'pages',
-	'action'        => 'pages',
-))->setName("pages");
-
 /* тестовая площадка */
 $router->addGet("/sandbox/", array(
 	'controller'    => 'sandbox',
