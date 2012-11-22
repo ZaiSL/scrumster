@@ -52,6 +52,7 @@ App.FeatureView = Backbone.View.extend({
 
     render : function (){
 
+	    this.$el.html(this.template.layout(this.model.toJSON()));
         return this;
     }
 
@@ -87,6 +88,11 @@ App.IssuesGroupView = Backbone.View.extend({
         if (this.model){
             //рендерим фичу
             // prependTo(this.$el);
+
+	        var featureView = new App.FeatureView({
+		        model : this.model
+	        });
+	        featureView.render().$el.prependTo(this.$el);
         }
 
 
